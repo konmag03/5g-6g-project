@@ -1,17 +1,15 @@
 import pandas as pd
 
-# 1. Φόρτωση των δεδομένων 
+# 1. Φόρτωση ΜΟΝΟ του train set
 train_df = pd.read_csv('/Users/antonistsipoulakos/Downloads/UNSW_NB15_training-set(in).csv')
 
+print("Το train set φορτώθηκε! Αρχικό μέγεθος:", train_df.shape)
 
-# 2. Ορισμός των στηλών προς διαγραφή
-columns_to_drop = ['id', 'attack_cat']
+# 2. Διαγραφή των στηλών 'id' και 'attack_cat'
+# axis=1 σημαίνει ότι διαγράφουμε στήλες 
+train_df = train_df.drop(['id', 'attack_cat'], axis=1)
 
-# 3. Διαγραφή των στηλών και από τα δύο DataFrames
-# Η παράμετρος axis=1 (ή columns=) υποδηλώνει ότι διαγράφουμε στήλες και όχι γραμμές
-train_df = train_df.drop(columns=columns_to_drop)
-test_df = test_df.drop(columns=columns_to_drop)
+print("Οι στήλες διαγράφηκαν! Νέο μέγεθος:", train_df.shape)
 
-# Προαιρετικά: Εμφάνιση των πρώτων 5 γραμμών του train set για επιβεβαίωση
-print("Οι στήλες id και attack_cat διαγράφηκαν με επιτυχία!")
-print(train_df.head())
+# 3. Εμφάνιση των πρώτων 5 γραμμών για οπτικό έλεγχο
+train_df.head()
