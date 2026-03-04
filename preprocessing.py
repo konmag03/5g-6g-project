@@ -1,0 +1,15 @@
+import pandas as pd
+
+# 1. Φόρτωση ΜΟΝΟ του train set
+train_df = pd.read_csv('"C:\Users\ldako\Downloads\UNSW_NB15_training-set(in).csv"')
+
+print("Το train set φορτώθηκε! Αρχικό μέγεθος:", train_df.shape)
+
+# 2. Διαγραφή των στηλών 'id' και 'attack_cat'
+# axis=1 σημαίνει ότι διαγράφουμε στήλες 
+train_df = train_df.drop(['id', 'attack_cat'], axis=1)
+
+print("Οι στήλες διαγράφηκαν! Νέο μέγεθος:", train_df.shape)
+
+# 3. Εμφάνιση των πρώτων 5 γραμμών για οπτικό έλεγχο
+train_df.head()
